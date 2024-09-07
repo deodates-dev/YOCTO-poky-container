@@ -3,20 +3,10 @@
 # distro-check.sh
 #
 # Copyright (C) 2020 Intel Corporation
+# Copyright (C) 2024 Konsulko Group
 #
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License version 2 as
-# published by the Free Software Foundation.
+# SPDX-License-Identifier: GPL-2.0-only
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 # Verify that the distro inside the container matches the one we expect based
 # on the build
 
@@ -26,17 +16,19 @@ BASE_DISTRO="$3"
 
 declare -A distros
 
-distros["centos-7"]="CentOS Linux 7 (Core)"
-distros["centos-8"]="CentOS Linux 8"
-distros["debian-9"]="Debian GNU/Linux 9 (stretch)"
+distros["alma-8"]="AlmaLinux 8"
+distros["alma-9"]="AlmaLinux 9"
 distros["debian-10"]="Debian GNU/Linux 10 (buster)"
 distros["debian-11"]="Debian GNU/Linux 11 (bullseye)"
-distros["fedora-33"]="Fedora 33 (Container Image)"
-distros["fedora-34"]="Fedora 34 (Container Image)"
-distros["opensuse-15.2"]="openSUSE Leap 15.2"
-distros["ubuntu-16.04"]="Ubuntu 16.04"
+distros["debian-12"]="Debian GNU/Linux 12 (bookworm)"
+distros["fedora-39"]="Fedora Linux 39 (Container Image)"
+distros["fedora-40"]="Fedora Linux 40 (Container Image)"
+distros["opensuse-15.4"]="openSUSE Leap 15.4"
+distros["opensuse-15.5"]="openSUSE Leap 15.5"
+distros["opensuse-15.6"]="openSUSE Leap 15.6"
 distros["ubuntu-18.04"]="Ubuntu 18.04"
 distros["ubuntu-20.04"]="Ubuntu 20.04"
+distros["ubuntu-22.04"]="Ubuntu 22.04"
 
 # If the distro is unknown it is a failure
 if [ "${distros[${BASE_DISTRO}]}" = "" ]; then
